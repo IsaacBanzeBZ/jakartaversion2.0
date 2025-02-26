@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navigation-rule>
+    <from-view-id>/index.xhtml</from-view-id>
+    <navigation-case>
+        <from-outcome>home</from-outcome>
+        <to-view-id>pages/home.xhtml</to-view-id>
+        <redirect/>
+        <from-outcome>ajouter</from-outcome>
+        <to-view-id>/lieu.xhtml</to-view-id>
+        <redirect/>
+    </navigation-case>
+</navigation-rule>
+

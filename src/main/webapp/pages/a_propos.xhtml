@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+    <title>A propos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"/>
+</head>
+<body class="d-flex justify-content-center align-items-center vh-100 bg-light">
+
+    <div class="container">
+        <!-- Section du texte séparé -->
+        <div class="text-center mb-4 p-3 shadow bg-white rounded" style="max-width: 500px; margin: auto;">
+            <h2 class="text-secondary">À propos</h2>
+            <p class="text-muted">
+                Chaque personne est une enveloppe contenant une histoire indispensable à l'oreille. 
+                Nous vous prions de nous explorer.
+            </p>
+        </div>
+
+        <!-- Formulaire Profil -->
+        <div class="p-4 shadow bg-white rounded" style="max-width: 400px; margin: auto;">
+            <h:form>
+                <h4 class="text-primary d-flex align-items-center gap-2">
+                    <i class="bi bi-person-circle"></i> Votre Profil
+                </h4>
+
+                <div class="mb-2">
+                    <h:outputLabel for="username" value="Nom d'utilisateur :" class="form-label fw-bold" />
+                    <h:inputText id="username" value="#{profilBean.username}" class="form-control" readonly="true"/>
+                </div>
+
+                <div class="mb-2">
+                    <h:outputLabel for="email" value="Email :" class="form-label fw-bold" />
+                    <h:inputText id="email" value="#{profilBean.email}" class="form-control" readonly="true"/>
+                </div>
+                
+                
+                <div class="mb-2">
+                    <h:outputLabel for="currentPassword" value="Ancien mot de passe :" class="form-label fw-bold" />
+                    <h:inputSecret id="currentPassword" value="#{profilBean.currentPassword}" class="form-control" required="true"/>
+                </div>
+                
+                <div class="mb-2">
+                    <h:outputLabel for="newPassword" value="Nouveau mot de passe :" class="form-label fw-bold" />
+                    <h:inputSecret id="newPassword" value="#{profilBean.newPassword}" class="form-control" required="true"/>
+                </div>
+
+                <div class="mb-3">
+                    <h:commandButton value="Modifier le mot de passe" action="#{profilBean.mettreAJourProfil}" 
+                                     styleClass="btn btn-warning w-100"/>
+                </div>
+
+                <!-- Bouton Déconnexion -->
+                <div class="mb-3">
+                    <h:commandButton value="Déconnexion" action="#{authBean.deconnexion}" 
+                                     styleClass="btn btn-danger w-100"/>
+                </div>
+            </h:form>
+
+            <!-- Formulaire séparé pour le bouton Home -->
+            <h:form>
+                <div class="text-center mt-3">
+                    <h:commandButton value="Home" action="/home" styleClass="btn btn-outline-danger w-100" />
+                </div>
+            </h:form>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
