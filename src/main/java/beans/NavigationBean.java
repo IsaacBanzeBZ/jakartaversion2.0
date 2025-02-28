@@ -34,10 +34,7 @@ public class NavigationBean {
         
         }catch(IOException e){
             e.printStackTrace();
-        
         }
-    
-    
     }
     public void voirAjouter(){
         try {
@@ -45,10 +42,17 @@ public class NavigationBean {
         
         }catch(IOException e){
             e.printStackTrace();
+        }
+    }
+    
+    public void voirVisiterLieu(){        
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("pages/guide.xhtml");
+        
+        }catch(IOException e){
+            e.printStackTrace();
         
         }
-    
-    
     }
       
 }

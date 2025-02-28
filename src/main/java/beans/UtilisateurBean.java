@@ -17,7 +17,7 @@ import jakarta.validation.constraints.Size;
 
 /**
  *
- * @author HP
+ * @author isaac
  */
 @Named(value="utilisateurBean")
 @RequestScoped

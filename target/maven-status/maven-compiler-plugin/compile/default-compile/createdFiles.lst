@@ -1,10 +1,13 @@
 business/LieuEntrepriseBean.class
 entities/Lieu.class
 beans/CurrencyConverterBean.class
+business/VisiteEntripriseBean.class
 welcomeBean/java.class
 business/UtilisateurEntrepriseBean.class
 business/SessionManager.class
 beans/UtilisateurBean.class
+entities/Visite.class
+beans/VisiteBean.class
 business/SessionControlFilter.class
 entities/Utilisateur.class
 beans/LieuBean.class

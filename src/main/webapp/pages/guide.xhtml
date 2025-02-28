@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+    <h:head>
+        <title>Choisissez un Lieu</title>
+        <!-- Bootstrap 5 -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <style>
+            body { background-color: #fff; }
+            .form-container {
+                max-width: 600px;
+                margin: 50px auto;
+                background: white;
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="form-container shadow-lg">
+                <h1 class="text-center">Sélectionner un Lieu</h1>
+                <h:form>
+                    <div class="mb-3">
+                        <label class="form-label">Lieu :</label>
+                        <h:selectOneMenu value="#{LieuBean.selectedLieu}" styleClass="form-select">
+                            <f:selectItems value="#{lieuBean.lieux}" var="lieu" itemValue="#{lieu.id}" itemLabel="#{lieu.nom}"/>
+                            <f:ajax listener="#{LieuBean.updateWeatherMessage}" render="weather formulaireVisite"/>
+                        </h:selectOneMenu>
+                    </div>
+                </h:form>
+                <h:outputText id="weather" value="#{LieuBean.weatherMessage}" styleClass="d-block text-center fw-bold text-primary mt-3"/>
+                <h:form>
+                    <h:messages globalOnly="true" styleClass="alert alert-success mb-3 text-center"/>
+                    <h:commandButton value="Visiter" action="#{formulaireVisiteBean.afficherFormulaireVisite}" styleClass="btn btn-primary w-100"/>
+                </h:form>
+            </div>
+        </div>
+        <div class="container">
+            <h:form id="formulaireVisite" rendered="#{formulaireVisiteBean.afficherFormulaireVisite}">
+                <div class="form-container shadow-lg">
+                    <h2 class="text-center">Détails de la Visite</h2>
+                    <div class="mb-3">
+                        <label class="form-label">Date de visite :</label>
+                        <h:inputText id="dateVisite" value="#{formulaireVisiteBean.dateVisite}" required="true" styleClass="form-control">
+                            <f:convertDateTime pattern="yyyy-MM-dd"/>
+                        </h:inputText>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Temps passé (minutes) :</label>
+                        <h:inputText id="tempsPasse" value="#{formulaireVisiteBean.tempsPasse}" required="true" styleClass="form-control">
+                            <f:convertNumber integerOnly="true"/>
+                        </h:inputText>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Observations :</label>
+                        <h:inputTextarea id="observations" value="#{formulaireVisiteBean.observations}" styleClass="form-control" rows="3"/>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Dépenses (en $) :</label>
+                        <h:inputText id="depenses" value="#{formulaireVisiteBean.depenses}" class="form-control">
+                            <f:convertNumber pattern="#,##0.00" currencySymbol="$"/>
+                        </h:inputText>
+                    </div>
+                    <h:commandButton value="Enregistrer" action="#{formulaireVisiteBean.sauvegarderVisite}" styleClass="btn btn-success w-100"/>
+                </div>
+            </h:form>
+        </div>
+    </h:body>
+</html>
